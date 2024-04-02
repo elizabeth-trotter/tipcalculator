@@ -14,35 +14,39 @@ export default function Home() {
           <p className="pb-1">Bill</p>
           <div className="bg-lightGray h-10 rounded flex justify-between items-center px-4">
             <IconDollarComponent />
-            <p>0</p>
+            <div className="flex-grow">
+              <input type="text" placeholder="0" className="w-full text-right outline-none bg-transparent" />
+            </div>
           </div>
 
           <p className="pt-10 pb-3">Select Tip %</p>
           <div className="grid grid-cols-3 gap-3">
-            <div className="bg-darkCyan rounded flex justify-center items-center h-10 w-20 text-white">
+            <button className="bg-darkCyan rounded flex justify-center items-center h-10 w-20 text-white">
               <p>5%</p>
-            </div>
-            <div className="bg-darkCyan rounded flex justify-center items-center h-10 w-20 text-white">
+            </button>
+            <button className="bg-darkCyan rounded flex justify-center items-center h-10 w-20 text-white">
               <p>10%</p>
-            </div>
-            <div className="bg-darkCyan rounded flex justify-center items-center h-10 w-20 text-white">
+            </button>
+            <button className="bg-darkCyan rounded flex justify-center items-center h-10 w-20 text-white">
               <p>15%</p>
-            </div>
-            <div className="bg-darkCyan rounded flex justify-center items-center h-10 w-20 text-white">
+            </button>
+            <button className="bg-darkCyan rounded flex justify-center items-center h-10 w-20 text-white">
               <p>25%</p>
-            </div>
-            <div className="bg-darkCyan rounded flex justify-center items-center h-10 w-20 text-white">
+            </button>
+            <button className="bg-darkCyan rounded flex justify-center items-center h-10 w-20 text-white">
               <p>50%</p>
-            </div>
-            <div className="bg-lightGray rounded flex justify-center items-center h-10 w-20 text-darkGrayCyan">
+            </button>
+            <button className="bg-lightGray rounded flex justify-center items-center h-10 w-20 text-darkGrayCyan">
               <p>Custom</p>
-            </div>
+            </button>
           </div>
 
           <p className="pt-10 pb-1">Number of People</p>
           <div className="bg-lightGray h-10 rounded flex justify-between items-center px-4">
             <IconPersonComponent />
-            <p>0</p>
+            <div className="flex-grow">
+              <input type="text" placeholder="0" className="w-full text-right outline-none bg-transparent" />
+            </div>
           </div>
         </div>
 
@@ -69,9 +73,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="bg-strongCyan flex justify-center items-center h-8 rounded">
+          <button className="bg-strongCyan flex justify-center items-center h-8 rounded">
             <p className="text-darkCyan">RESET</p>
-          </div>
+          </button>
         </div>
       </div>
     </main>
