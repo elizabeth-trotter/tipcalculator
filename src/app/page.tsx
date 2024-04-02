@@ -13,13 +13,13 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24 bg-lightGrayCyan">
+    <main className="flex min-h-screen flex-col items-center pt-10 md:p-24 bg-lightGrayCyan">
       <div>
         <LogoComponent />
       </div>
 
-      <div className="mt-16 rounded-xl bg-white p-6 text-grayCyan flex gap-10 text-sm">
-        <div className="ps-4 pt-3">
+      <div className="mt-10 md:mt-16 rounded-xl bg-white p-6 text-grayCyan flex justify-center flex-wrap gap-10 text-lg sm:text-sm">
+        <div className="ps-0 md:ps-4 pt-3 w-80 md:max-w-fit">
           <p className="pb-1">Bill</p>
           <div className="bg-lightGray h-10 rounded flex justify-between items-center px-4">
             <IconDollarComponent />
@@ -33,10 +33,9 @@ export default function Home() {
           </div>
 
           <p className="pt-10 pb-3">Select Tip %</p>
-          <div className="grid grid-cols-3 gap-3 text-lg">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-xl sm:text-lg">
             <label
-              className={`${selectedValue === '5%' ? 'bg-strongCyan' : 'bg-darkCyan'} rounded flex justify-center items-center h-10 text-white hover:bg-lightGrayCyan hover:text-darkCyan cursor-pointer`}
-              style={{ width: 90 }}
+              className={`${selectedValue === '5%' ? 'bg-strongCyan' : 'bg-darkCyan'} rounded flex justify-center items-center h-12 md:h-10 w-36 md:w-24 text-white hover:bg-lightGrayCyan hover:text-darkCyan cursor-pointer`}
             >
               <input
                 type="radio"
@@ -48,8 +47,7 @@ export default function Home() {
               <span>5%</span>
             </label>
             <label
-              className={`${selectedValue === '10%' ? 'bg-strongCyan' : 'bg-darkCyan'} rounded flex justify-center items-center h-10 text-white hover:bg-lightGrayCyan hover:text-darkCyan cursor-pointer`}
-              style={{ width: 90 }}
+              className={`${selectedValue === '10%' ? 'bg-strongCyan' : 'bg-darkCyan'} rounded flex justify-center items-center h-12 md:h-10 w-36 md:w-24 text-white hover:bg-lightGrayCyan hover:text-darkCyan cursor-pointer`}
             >
               <input
                 type="radio"
@@ -61,8 +59,7 @@ export default function Home() {
               <span>10%</span>
             </label>
             <label
-              className={`${selectedValue === '15%' ? 'bg-strongCyan' : 'bg-darkCyan'} rounded flex justify-center items-center h-10 text-white hover:bg-lightGrayCyan hover:text-darkCyan cursor-pointer`}
-              style={{ width: 90 }}
+              className={`${selectedValue === '15%' ? 'bg-strongCyan' : 'bg-darkCyan'} rounded flex justify-center items-center h-12 md:h-10 w-36 md:w-24 text-white hover:bg-lightGrayCyan hover:text-darkCyan cursor-pointer`}
             >
               <input
                 type="radio"
@@ -74,8 +71,7 @@ export default function Home() {
               <span>15%</span>
             </label>
             <label
-              className={`${selectedValue === '25%' ? 'bg-strongCyan' : 'bg-darkCyan'} rounded flex justify-center items-center h-10 text-white hover:bg-lightGrayCyan hover:text-darkCyan cursor-pointer`}
-              style={{ width: 90 }}
+              className={`${selectedValue === '25%' ? 'bg-strongCyan' : 'bg-darkCyan'} rounded flex justify-center items-center h-12 md:h-10 w-36 md:w-24 text-white hover:bg-lightGrayCyan hover:text-darkCyan cursor-pointer`}
             >
               <input
                 type="radio"
@@ -87,8 +83,7 @@ export default function Home() {
               <span>25%</span>
             </label>
             <label
-              className={`${selectedValue === '50%' ? 'bg-strongCyan' : 'bg-darkCyan'} rounded flex justify-center items-center h-10 text-white hover:bg-lightGrayCyan hover:text-darkCyan cursor-pointer`}
-              style={{ width: 90 }}
+              className={`${selectedValue === '50%' ? 'bg-strongCyan' : 'bg-darkCyan'} rounded flex justify-center items-center h-12 md:h-10 w-36 md:w-24 text-white hover:bg-lightGrayCyan hover:text-darkCyan cursor-pointer`}
             >
               <input
                 type="radio"
@@ -101,9 +96,8 @@ export default function Home() {
             </label>
             <input
               type="text"
-              className="bg-lightGray rounded text-center h-10 text-darkGrayCyan"
+              className="bg-lightGray rounded text-right pe-3 h-12 md:h-10 w-36 md:w-24 text-darkGrayCyan"
               placeholder="Custom"
-              style={{ width: 90 }}
             />
           </div>
 
@@ -120,7 +114,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="bg-darkCyan pt-10 pb-6 px-10 text-white rounded-xl flex flex-col justify-between">
+        <div className="bg-darkCyan pt-10 pb-6 px-7 sm:px-10 text-white rounded-xl flex flex-col justify-between">
           <div>
             <div className="flex justify-between items-center gap-16">
               <div>
@@ -143,7 +137,7 @@ export default function Home() {
             </div>
           </div>
 
-          <button className="bg-strongCyan hover:bg-lightGrayCyan hover:text-darkCyan flex justify-center items-center h-8 rounded">
+          <button className="mt-10 sm:pt-0 bg-strongCyan hover:bg-lightGrayCyan hover:text-darkCyan flex justify-center items-center h-12 sm:h-8 rounded">
             <p className="text-darkCyan">RESET</p>
           </button>
         </div>
