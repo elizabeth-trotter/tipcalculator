@@ -7,7 +7,7 @@ This is my version of the [Tip calculator app challenge on Frontend Mentor](http
 - [Overview](#overview)
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
-  - [Links](#links)
+  - [Link](#link)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
@@ -31,9 +31,9 @@ Users should be able to:
 
 ![Screenshot](image.png)
 
-### Links
+### Link
 
-- Live Site URL: [Tip Calculator](https://tipcalculator-eosin.vercel.app/)
+- Live Site URL: [SPLITTER - Tip Calculator](https://tipcalculator-eosin.vercel.app/)
 
 ## My process
 
