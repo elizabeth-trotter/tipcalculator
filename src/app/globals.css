@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.no-spin::-webkit-outer-spin-button,
+.no-spin::-webkit-inner-spin-button {
+  /* Removes the default spinner in Chrome */
+  -webkit-appearance: none;
+  margin: 0; /* Removes the inner padding in Chrome */
+}
+
+.no-spin {
+  /* Removes the default spinner in Firefox */
+  -moz-appearance: textfield;
+}

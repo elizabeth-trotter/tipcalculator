@@ -1,16 +1,37 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IconDollarComponent from "./Components/IconDollarComponent";
 import IconPersonComponent from "./Components/IconPersonComponent";
 import LogoComponent from "./Components/LogoComponent";
 
 export default function Home() {
   const [selectedValue, setSelectedValue] = useState('');
+  const [billInput, setBillInput] = useState(0);
+  const [peopleInput, setPeopleInput] = useState(0);
+  const [tip, setTip] = useState(0);
+  const [total, setTotal] = useState(0);
 
   const handleRadioChange = (value: string) => {
     setSelectedValue(value);
   };
+
+  const handleReset = () => {
+    setSelectedValue('');
+    setBillInput(0);
+    setPeopleInput(0);
+    setTip(0);
+    setTotal(0);
+  };
+
+  useEffect(() => {
+    if (selectedValue != '' && billInput > 0 && peopleInput > 0) {
+      const percentage = parseFloat(selectedValue.replace('%', '')) / 100;
+
+      setTip((billInput * percentage) / peopleInput);
+      setTotal((billInput + (billInput * percentage)) / peopleInput);
+    }
+  }, [selectedValue, billInput, peopleInput]);
 
   return (
     <main className="flex min-h-screen flex-col items-center pt-10 md:p-24 bg-lightGrayCyan">
@@ -21,13 +42,16 @@ export default function Home() {
       <div className="mt-10 md:mt-16 rounded-xl bg-white p-6 text-grayCyan flex justify-center flex-wrap gap-10 text-lg sm:text-sm">
         <div className="ps-0 md:ps-4 pt-3 w-80 md:max-w-fit">
           <p className="pb-1">Bill</p>
-          <div className="bg-lightGray h-10 rounded flex justify-between items-center px-4">
+          <div className="bg-lightGray h-10 rounded flex justify-between items-center px-4 border-lightGray border-2 focus-within:border-strongCyan">
             <IconDollarComponent />
             <div className="flex-grow">
               <input
-                type="text"
+                name="bill"
+                type="number"
                 placeholder="0"
-                className="w-full text-right outline-none bg-transparent"
+                className="w-full text-right outline-none bg-transparent no-spin"
+                value={billInput}
+                onChange={(e) => { setBillInput(parseFloat(e.target.value)) }}
               />
             </div>
           </div>
@@ -95,20 +119,29 @@ export default function Home() {
               <span>50%</span>
             </label>
             <input
-              type="text"
-              className="bg-lightGray rounded text-right pe-3 h-12 md:h-10 w-36 md:w-24 text-darkGrayCyan"
+              name="radio"
+              type="number"
+              className="bg-lightGray rounded text-right pe-3 h-12 md:h-10 w-36 md:w-24 text-darkGrayCyan no-spin border-transparent border-2 hover:border-strongCyan"
               placeholder="Custom"
+              value={selectedValue}
+              onChange={(e) => { e.target.value }}
             />
           </div>
 
-          <p className="pt-10 pb-1">Number of People</p>
-          <div className="bg-lightGray h-10 rounded flex justify-between items-center px-4">
+          <div className="pt-10 pb-1 flex justify-between">
+            <p>Number of People</p>
+            <p className={`text-orange-600 ${selectedValue != '' && billInput > 0 ? 'block' : 'hidden'}`}>Cant be zero</p>
+          </div>
+          <div className={`bg-lightGray h-10 rounded flex justify-between items-center px-4 ${selectedValue != '' && billInput > 0 ? 'border-orange-600' : 'border-lightGray'} border-2 focus-within:border-strongCyan`}>
             <IconPersonComponent />
             <div className="flex-grow">
               <input
-                type="text"
+                name="people"
+                type="number"
                 placeholder="0"
-                className="w-full text-right outline-none bg-transparent"
+                className="w-full text-right outline-none bg-transparent no-spin"
+                value={peopleInput}
+                onChange={(e) => { setPeopleInput(parseFloat(e.target.value)) }}
               />
             </div>
           </div>
@@ -122,7 +155,7 @@ export default function Home() {
                 <p className="text-xs text-grayCyan">/ person</p>
               </div>
               <div>
-                <p className="text-3xl text-strongCyan">$0.00</p>
+                <p className="text-3xl text-strongCyan">$<span>{tip.toFixed(2)}</span></p>
               </div>
             </div>
 
@@ -132,12 +165,12 @@ export default function Home() {
                 <p className="text-xs text-grayCyan">/ person</p>
               </div>
               <div>
-                <p className="text-3xl text-strongCyan">$0.00</p>
+                <p className="text-3xl text-strongCyan">$<span>{total.toFixed(2)}</span></p>
               </div>
             </div>
           </div>
 
-          <button className="mt-10 sm:pt-0 bg-strongCyan hover:bg-lightGrayCyan hover:text-darkCyan flex justify-center items-center h-12 sm:h-8 rounded">
+          <button onClick={handleReset} className="mt-10 sm:pt-0 bg-strongCyan hover:bg-lightGrayCyan hover:text-darkCyan flex justify-center items-center h-12 sm:h-8 rounded">
             <p className="text-darkCyan">RESET</p>
           </button>
         </div>
