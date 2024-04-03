@@ -27,6 +27,7 @@ export default function Home() {
   useEffect(() => {
     if (selectedValue != '' && billInput > 0 && peopleInput > 0) {
       const percentage = parseFloat(selectedValue.replace('%', '')) / 100;
+      console.log(percentage)
 
       setTip((billInput * percentage) / peopleInput);
       setTotal((billInput + (billInput * percentage)) / peopleInput);
@@ -48,7 +49,6 @@ export default function Home() {
               <input
                 name="bill"
                 type="number"
-                placeholder="0"
                 className="w-full text-right outline-none bg-transparent no-spin"
                 value={billInput}
                 onChange={(e) => { setBillInput(parseFloat(e.target.value)) }}
@@ -66,7 +66,8 @@ export default function Home() {
                 name="percentage"
                 value="5%"
                 className="appearance-none"
-                onChange={() => handleRadioChange('5%')} checked={selectedValue === '5%'}
+                onChange={() => handleRadioChange('5%')} 
+                checked={selectedValue === '5%'}
               />
               <span>5%</span>
             </label>
@@ -78,7 +79,8 @@ export default function Home() {
                 name="percentage"
                 value="10%"
                 className="appearance-none"
-                onChange={() => handleRadioChange('10%')} checked={selectedValue === '10%'}
+                onChange={() => handleRadioChange('10%')} 
+                checked={selectedValue === '10%'}
               />
               <span>10%</span>
             </label>
@@ -90,7 +92,8 @@ export default function Home() {
                 name="percentage"
                 value="15%"
                 className="appearance-none"
-                onChange={() => handleRadioChange('15%')} checked={selectedValue === '15%'}
+                onChange={() => handleRadioChange('15%')} 
+                checked={selectedValue === '15%'}
               />
               <span>15%</span>
             </label>
@@ -102,7 +105,8 @@ export default function Home() {
                 name="percentage"
                 value="25%"
                 className="appearance-none"
-                onChange={() => handleRadioChange('25%')} checked={selectedValue === '25%'}
+                onChange={() => handleRadioChange('25%')} 
+                checked={selectedValue === '25%'}
               />
               <span>25%</span>
             </label>
@@ -114,7 +118,8 @@ export default function Home() {
                 name="percentage"
                 value="50%"
                 className="appearance-none"
-                onChange={() => handleRadioChange('50%')} checked={selectedValue === '50%'}
+                onChange={() => handleRadioChange('50%')} 
+                checked={selectedValue === '50%'}
               />
               <span>50%</span>
             </label>
@@ -124,21 +129,20 @@ export default function Home() {
               className="bg-lightGray rounded text-right pe-3 h-12 md:h-10 w-36 md:w-24 text-darkGrayCyan no-spin border-transparent border-2 hover:border-strongCyan"
               placeholder="Custom"
               value={selectedValue}
-              onChange={(e) => { e.target.value }}
+              onChange={(e) => handleRadioChange(e.target.value)} 
             />
           </div>
 
           <div className="pt-10 pb-1 flex justify-between">
             <p>Number of People</p>
-            <p className={`text-orange-600 ${selectedValue != '' && billInput > 0 ? 'block' : 'hidden'}`}>Cant be zero</p>
+            <p className={`text-orange-600 ${selectedValue != '' && billInput > 0 && peopleInput == 0 ? 'block' : 'hidden'}`}>Cant be zero</p>
           </div>
-          <div className={`bg-lightGray h-10 rounded flex justify-between items-center px-4 ${selectedValue != '' && billInput > 0 ? 'border-orange-600' : 'border-lightGray'} border-2 focus-within:border-strongCyan`}>
+          <div className={`bg-lightGray h-10 rounded flex justify-between items-center px-4 ${selectedValue != '' && billInput > 0 && peopleInput == 0 ? 'border-orange-600' : 'border-lightGray'} border-2 focus-within:border-strongCyan`}>
             <IconPersonComponent />
             <div className="flex-grow">
               <input
                 name="people"
                 type="number"
-                placeholder="0"
                 className="w-full text-right outline-none bg-transparent no-spin"
                 value={peopleInput}
                 onChange={(e) => { setPeopleInput(parseFloat(e.target.value)) }}
@@ -170,7 +174,7 @@ export default function Home() {
             </div>
           </div>
 
-          <button onClick={handleReset} className="mt-10 sm:pt-0 bg-strongCyan hover:bg-lightGrayCyan hover:text-darkCyan flex justify-center items-center h-12 sm:h-8 rounded">
+          <button onClick={handleReset} className={`mt-10 sm:pt-0 ${selectedValue == '' && billInput == 0 && peopleInput == 0 ? 'bg-[#006b70]': 'bg-strongCyan'} hover:bg-lightGrayCyan hover:text-darkCyan flex justify-center items-center h-12 sm:h-8 rounded`}>
             <p className="text-darkCyan">RESET</p>
           </button>
         </div>
