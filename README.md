@@ -77,17 +77,19 @@ const spaceMono = Space_Mono({
 
 ## Peer Review
 
-**Name:** Joseph Poncini **Date/ Time:** 4/3/2024 2:00 pm
+> **Name:** Joseph Poncini **Date/ Time:** 4/3/2024 2:00 pm
+> 
+> **Comments:** Overall your site looks a lot like the prototype so good job! I noticed that I can change the value on the custom button by scrolling on it which I though was really cool. I only found a few areas that I think can be improved upon so I'll try to list them below in a somewhat organized fashion
+> 
+> - Interface:
+>   - The buttons after you click them should have the very dark cyan color. easy fix
+> 
+> - Niche improvements:
+>   - technically you can't have a decimal value of people so you can restrict the peoples input to only be whole numbers, likewise the bill can be restricted down to values having at most two decimal points
+>   - I put a limit to how big of a number you can input on mine, you can do the same to prevent the container from stretching out past the screen if someone decided to type a really big number
 
-**Comments:** Overall your site looks a lot like the prototype so good job! I noticed that I can change the value on the custom button by scrolling on it which I though was really cool. I only found a few areas that I think can be improved upon so I'll try to list them below in a somewhat organized fashion
-
-- Interface:
-  - The buttons after you click them should have the very dark cyan color. easy fix
-
-- Organization
-  - No need to change this since it's already working but for your buttons you have code that is really repetitive and in the future could probably be cleaned up by just making a button component and mapping through some sort of tip % value array
-
-- Niche improvements:
-  - technically you can't have a decimal value of people so you can restrict the peoples input to only be whole numbers, likewise the bill can be restricted down to values having at most two decimal points
-  - I put a limit to how big of a number you can input on mine, you can do the same to prevent the container from stretching out past the screen if someone decided to type a really big number
-
+**Issue(s) Resolved**:
+- [x] Verified with protoype color is strong cyan for active buttons & very dark cyan for inactive buttons 4/3/24 2:30pm
+- [x] Max value for all inputs added 4/3/24 2:50pm
+- [x] Bill input restricted to two decimals 4/3/24 3:00pm
+- [x] Number of people restricted to whole, positive numbers only 4/3/24 3:20pm

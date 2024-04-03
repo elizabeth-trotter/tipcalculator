@@ -51,7 +51,17 @@ export default function Home() {
                 type="number"
                 className="w-full text-right outline-none bg-transparent no-spin"
                 value={billInput}
-                onChange={(e) => { setBillInput(parseFloat(e.target.value)) }}
+                onChange={(e) => { 
+                  let inputValue = parseFloat(e.target.value);
+                  // Check if value is within range
+                  if (!isNaN(inputValue) && inputValue >= 0.01 && inputValue <= 1000000) {
+                    // Round to two decimal places
+                    inputValue = Math.round(inputValue * 100) / 100;
+                    setBillInput(inputValue);
+                  }
+                }}
+                min={0.01}
+                max={1000000}
               />
             </div>
           </div>
@@ -129,7 +139,15 @@ export default function Home() {
               className="bg-lightGray rounded text-right pe-3 h-12 md:h-10 w-36 md:w-24 text-darkGrayCyan no-spin border-transparent border-2 hover:border-strongCyan"
               placeholder="Custom"
               value={selectedValue}
-              onChange={(e) => handleRadioChange(e.target.value)} 
+              onChange={(e) => {
+                let inputValue = parseInt(e.target.value);
+                if (inputValue >= 1 && inputValue <= 100) {
+                  handleRadioChange(inputValue.toString());
+                }
+              }}
+              min={1}
+              max={100}
+              step={1}
             />
           </div>
 
@@ -145,7 +163,16 @@ export default function Home() {
                 type="number"
                 className="w-full text-right outline-none bg-transparent no-spin"
                 value={peopleInput}
-                onChange={(e) => { setPeopleInput(parseFloat(e.target.value)) }}
+                onChange={(e) => { 
+                  let inputValue = parseInt(e.target.value);
+                  // Check if value is within range
+                  if (!isNaN(inputValue) && inputValue >= 1 && inputValue <= 100) {
+                    setPeopleInput(inputValue);
+                  }
+                }}
+                step={1}
+                min={1}
+                max={100}
               />
             </div>
           </div>
